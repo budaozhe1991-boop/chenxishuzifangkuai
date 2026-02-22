@@ -31,10 +31,10 @@ export default function App() {
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans p-4 md:p-8 flex flex-col items-center">
       <header className="mb-8 text-center">
         <h1 className="text-4xl font-black tracking-tighter text-slate-800 mb-1 italic">
-          SUM<span className="text-emerald-500">STACK</span>
+          陈星的<span className="text-emerald-500">数字积木</span>
         </h1>
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
-          The Ultimate Math Puzzle
+          极致数学谜题
         </p>
       </header>
 
@@ -108,19 +108,19 @@ export default function App() {
 
         <footer className="mt-8 text-center space-y-4">
           <div className="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm text-left">
-            <h3 className="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">How to Play</h3>
+            <h3 className="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">玩法说明</h3>
             <ul className="text-sm text-slate-600 space-y-1 font-medium">
               <li className="flex items-start gap-2">
                 <span className="text-emerald-500 font-bold">1.</span>
-                Select numbers that add up to the target.
+                点击数字，使它们的总和等于目标数字。
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-emerald-500 font-bold">2.</span>
-                Don't let the blocks reach the red line!
+                不要让积木堆到顶部的红线！
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-emerald-500 font-bold">3.</span>
-                In Time Mode, a new row is added every 70s.
+                在计时模式下，每 50 秒会新增一行。
               </li>
             </ul>
           </div>

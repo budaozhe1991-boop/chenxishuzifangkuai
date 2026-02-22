@@ -1,5 +1,5 @@
 {
-  "name": "SumStack: Number Puzzle",
-  "description": "A fast-paced math puzzle game. Sum numbers to reach the target and prevent the stack from reaching the top.",
+  "name": "陈星的数字积木",
+  "description": "一个快节奏的数学益智游戏。求和数字以达到目标，并防止积木堆叠到顶部。",
   "requestFramePermissions": []
 }

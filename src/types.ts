@@ -23,4 +23,4 @@ export interface GameState {
 export const GRID_ROWS = 10;
 export const GRID_COLS = 6;
 export const INITIAL_ROWS = 4;
-export const TIME_LIMIT = 70; // seconds per round in time mode
+export const TIME_LIMIT = 50; // seconds per round in time mode
