@@ -1,5 +1,5 @@
 import React from 'react';
-import { Target, Trophy, Clock, Play, Pause, RotateCcw } from 'lucide-react';
+import { Target, Trophy, Clock, Play, Pause, RotateCcw, Volume2, VolumeX } from 'lucide-react';
 import { GameMode, TIME_LIMIT } from '../types';
 import { cn } from '../utils';
 
@@ -10,7 +10,9 @@ interface GameHeaderProps {
   mode: GameMode;
   timeLeft: number;
   isPaused: boolean;
+  isMusicEnabled: boolean;
   onTogglePause: () => void;
+  onToggleMusic: () => void;
   onReset: () => void;
   onModeChange: (mode: GameMode) => void;
 }
@@ -22,7 +24,9 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
   mode,
   timeLeft,
   isPaused,
+  isMusicEnabled,
   onTogglePause,
+  onToggleMusic,
   onReset,
   onModeChange,
 }) => {
@@ -50,10 +54,13 @@ export const GameHeader: React.FC<GameHeaderProps> = ({
           </button>
         </div>
         <div className="flex gap-2">
-          <button onClick={onReset} className="p-2 rounded-full hover:bg-slate-100 transition-colors">
+          <button onClick={onToggleMusic} className="p-2 rounded-full hover:bg-slate-100 transition-colors" title="Toggle Music">
+            {isMusicEnabled ? <Volume2 size={20} className="text-slate-600" /> : <VolumeX size={20} className="text-slate-600" />}
+          </button>
+          <button onClick={onReset} className="p-2 rounded-full hover:bg-slate-100 transition-colors" title="Reset Game">
             <RotateCcw size={20} className="text-slate-600" />
           </button>
-          <button onClick={onTogglePause} className="p-2 rounded-full hover:bg-slate-100 transition-colors">
+          <button onClick={onTogglePause} className="p-2 rounded-full hover:bg-slate-100 transition-colors" title={isPaused ? "Resume" : "Pause"}>
             {isPaused ? <Play size={20} className="text-slate-600" /> : <Pause size={20} className="text-slate-600" />}
           </button>
         </div>

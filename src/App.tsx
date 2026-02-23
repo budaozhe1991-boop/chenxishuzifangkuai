@@ -25,6 +25,8 @@ export default function App() {
     selectedIds,
     toggleSelect,
     initGame,
+    isMusicEnabled,
+    toggleMusic,
   } = useGameLogic();
 
   return (
@@ -46,7 +48,9 @@ export default function App() {
           mode={mode}
           timeLeft={timeLeft}
           isPaused={isPaused}
+          isMusicEnabled={isMusicEnabled}
           onTogglePause={() => setIsPaused(!isPaused)}
+          onToggleMusic={toggleMusic}
           onReset={initGame}
           onModeChange={setMode}
         />

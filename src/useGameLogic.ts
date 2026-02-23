@@ -13,8 +13,49 @@ export function useGameLogic() {
   const [isPaused, setIsPaused] = useState(false);
   const [timeLeft, setTimeLeft] = useState(TIME_LIMIT);
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [isMusicEnabled, setIsMusicEnabled] = useState(() => {
+    const saved = localStorage.getItem('sumstack-music');
+    return saved === null ? true : saved === 'true';
+  });
 
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Initialize audio
+  useEffect(() => {
+    audioRef.current = new Audio('https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3');
+    audioRef.current.loop = true;
+    audioRef.current.volume = 0.3;
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  // Handle music playback
+  useEffect(() => {
+    if (!audioRef.current) return;
+
+    if (isMusicEnabled && !isPaused && !isGameOver) {
+      audioRef.current.play().catch(() => {
+        // Handle autoplay block - user needs to interact first
+        console.log('Autoplay blocked');
+      });
+    } else {
+      audioRef.current.pause();
+    }
+  }, [isMusicEnabled, isPaused, isGameOver]);
+
+  const toggleMusic = () => {
+    setIsMusicEnabled(prev => {
+      const next = !prev;
+      localStorage.setItem('sumstack-music', String(next));
+      return next;
+    });
+  };
 
   // Initialize grid
   const initGame = useCallback(() => {
@@ -184,5 +225,7 @@ export function useGameLogic() {
     selectedIds,
     toggleSelect,
     initGame,
+    isMusicEnabled,
+    toggleMusic,
   };
 }
